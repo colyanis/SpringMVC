@@ -12,8 +12,7 @@ public class OffersController {
 
     @RequestMapping("/")
     public String showHome(Model model) {
-        model.addAttribute("name", "River");
-
+        model.addAttribute("name", "<b>River</b>");
         return "home";
     }
 }
