@@ -15,19 +15,13 @@ import java.util.List;
 public class OffersDAO {
     private NamedParameterJdbcTemplate jdbc;
 
-    public OffersDAO() {
-        System.out.println("Successfully loaded OffersDAO.");
-    }
-
-//    @Autowired
+    @Autowired
     public void setDataSource(DataSource jdbc) {
         this.jdbc = new NamedParameterJdbcTemplate(jdbc);
     }
 
     public List<Offer> getOffers() {
-        MapSqlParameterSource params = new MapSqlParameterSource("name", "Mike");
-
-        return jdbc.query("select * from offers where name = :name", (resultSet, rowNum) -> {
+        return jdbc.query("select * from offers", (resultSet, rowNum) -> {
             Offer offer = new Offer();
             offer.setId(resultSet.getInt("id"));
             offer.setName(resultSet.getString("name"));

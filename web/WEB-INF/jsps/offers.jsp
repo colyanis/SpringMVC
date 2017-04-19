@@ -7,10 +7,14 @@
 <head>
     <title>Insert title here</title>
 </head>
-<body>
+<>
+Hi there!
+<br/>
 
-<p><a href="${pageContext.request.contextPath}/offers">Show current offers.</a></p>
-<p><a href="${pageContext.request.contextPath}/createOffer">Add a new offer.</a></p>
-
+<c:forEach var="offer" items="${offers}">
+    <p>
+        <c:out value="${offer}"></c:out>
+    </p>
+</c:forEach>
 </body>
 </html>
