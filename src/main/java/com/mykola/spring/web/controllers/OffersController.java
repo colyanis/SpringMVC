@@ -2,6 +2,7 @@ package com.mykola.spring.web.controllers;
 
 import com.mykola.spring.web.dao.Offer;
 import com.mykola.spring.web.service.OffersService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,9 +46,9 @@ public class OffersController {
         return "createOffer";
     }
 
-    @RequestMapping("/docreate")
-    public String doCreate() {
-
+    @RequestMapping(value = "/docreate", method = RequestMethod.POST)
+    public String doCreate(Model model, Offer offer) {
+        System.out.println(offer);
         return "offercreated";
     }
 }

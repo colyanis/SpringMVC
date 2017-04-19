@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form method="get" action="${pageContext.request.contextPath}/docreate">
+<form method="post" action="${pageContext.request.contextPath}/docreate">
 <table>
     <tr>
         <td>Name:</td>
@@ -23,13 +23,13 @@
     <tr>
         <td>Email:</td>
         <td>
-            <input name="name" type="text"/>
+            <input name="email" type="text"/>
         </td>
     </tr>
     <tr>
         <td>Your offer:</td>
         <td>
-            <textarea rows="10" cols="10"></textarea>
+            <textarea name="text" rows="10" cols="10"></textarea>
         </td>
     </tr>
     <tr>

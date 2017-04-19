@@ -11,6 +11,6 @@
     <title>Offer Created</title>
 </head>
 <body>
-
+Offer created
 </body>
 </html>
