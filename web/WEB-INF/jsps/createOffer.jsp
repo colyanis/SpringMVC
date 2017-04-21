@@ -1,44 +1,47 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mtverdok
-  Date: 4/19/2017
-  Time: 5:08 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%--suppress ALL --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+
 <html>
 <head>
     <title>Create Offer</title>
+    <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-<form method="post" action="${pageContext.request.contextPath}/docreate">
-<table>
+<sf:form method="post" action="${pageContext.request.contextPath}/docreate" commandName="offer">
+<table class="formtable">
     <tr>
-        <td>Name:</td>
+        <td class="label">Name:</td>
         <td>
-            <input name="name" type="text">
+            <sf:input class="control" name="name" type="text" path="name"/>
+            <br/>
+            <sf:errors path="name" cssClass="error"></sf:errors>
         </td>
     </tr>
     <tr>
-        <td>Email:</td>
+        <td class="label">Email:</td>
         <td>
-            <input name="email" type="text"/>
+            <sf:input class="control" path="email" name="email" type="text"/>
+            <br/>
+            <sf:errors path="email" cssClass="error"></sf:errors>
         </td>
     </tr>
     <tr>
-        <td>Your offer:</td>
+        <td class="label">Your offer:</td>
         <td>
-            <textarea name="text" rows="10" cols="10"></textarea>
+            <sf:textarea class="control" name="text" rows="10" cols="10" path="text"></sf:textarea>
+            <br/>
+            <sf:errors path="text" cssClass="error"></sf:errors>
         </td>
     </tr>
     <tr>
         <td></td>
         <td>
-            <input value="Create advert" type="submit"/>
+            <input class="control" value="Create advert" type="submit"/>
         </td>
     </tr>
 </table>
-</form>
+</sf:form>
 </body>
 </html>

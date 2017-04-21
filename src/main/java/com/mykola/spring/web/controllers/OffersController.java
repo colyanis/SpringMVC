@@ -2,14 +2,16 @@ package com.mykola.spring.web.controllers;
 
 import com.mykola.spring.web.dao.Offer;
 import com.mykola.spring.web.service.OffersService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -41,14 +43,21 @@ public class OffersController {
     }
 
     @RequestMapping("/createOffer")
-    public String createOffer() {
-
+    public String createOffer(Model model) {
+        model.addAttribute("offer", new Offer());
         return "createOffer";
     }
 
     @RequestMapping(value = "/docreate", method = RequestMethod.POST)
-    public String doCreate(Model model, Offer offer) {
-        System.out.println(offer);
+    public String doCreate(Model model, @Valid Offer offer, BindingResult result) {
+
+        if (result.hasErrors()) {
+
+            return "createOffer";
+        } else {
+            System.out.println("Form validated.");
+        }
+
         return "offercreated";
     }
 }
