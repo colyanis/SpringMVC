@@ -1,5 +1,6 @@
 package com.mykola.spring.web.dao;
 
+import com.mykola.spring.web.validation.ValidEmail;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -12,7 +13,9 @@ public class Offer {
     @Size(min = 5, max = 100, message = "Name must be 5-100 chars.")
     private String name;
 
-    @Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear a valid email address.")
+    @NotNull
+//    @Pattern(regexp = ".*\\@.*\\..*", message = "This does not appear a valid email address.")
+    @ValidEmail(min = 6, message = "Not valid email.")
     private String email;
 
     @Size(min = 20, max = 100, message = "Text must be 20-100 chars.")
