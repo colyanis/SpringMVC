@@ -1,11 +1,14 @@
 package com.mykola.spring.web.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -30,5 +33,27 @@ public class OffersDAO {
 
             return offer;
         });
+    }
+
+    public boolean create(Offer offer) {
+        BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(offer);
+
+        return jdbc.update("insert into offers (name, email, text) values (:name, :email, :text)", params) == 1;
+    }
+
+    public Offer getOffer(int i) {
+        MapSqlParameterSource params = new MapSqlParameterSource();
+
+
+        return jdbc.query("select * from offers where id=:id", params,
+                (rs, rowNumber) -> {
+                    Offer offer = new Offer();
+                    offer.setId(rs.getInt("id"));
+                    offer.setName(rs.getString("name"));
+                    offer.setEmail(rs.getString("id"));
+                    offer.setText(rs.getString("text"));
+                    return offer;
+                }).stream().findAny().orElse(null);
+
     }
 }
