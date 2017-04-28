@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<h2>Create new account</h2>
+
 <sf:form method="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
 <table class="formtable">
     <tr>
@@ -44,7 +46,7 @@
     <tr>
         <td></td>
         <td>
-            <input class="control" value="Create advert" type="submit"/>
+            <input class="control" value="Create account" type="submit"/>
         </td>
     </tr>
 </table>

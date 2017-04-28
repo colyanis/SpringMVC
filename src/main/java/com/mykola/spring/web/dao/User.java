@@ -1,11 +1,14 @@
 package com.mykola.spring.web.dao;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by M on 27.04.2017.
  */
 public class User {
     private String username;
     private String password;
+    private String email;
     private boolean enabled = false;
     private String authority;
 
@@ -13,9 +16,10 @@ public class User {
 
     }
 
-    public User(String username, String password, boolean enabled, String authority) {
+    public User(String username, String password, String email, boolean enabled, String authority) {
         this.username = username;
         this.password = password;
+        this.email = email;
         this.enabled = enabled;
         this.authority = authority;
     }
@@ -50,5 +54,13 @@ public class User {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

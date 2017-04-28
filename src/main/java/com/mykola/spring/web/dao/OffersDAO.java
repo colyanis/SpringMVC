@@ -15,7 +15,7 @@ import java.util.List;
  * Created by mtverdok on 4/10/2017.
  */
 @Component("offersDao")
-public class OffersDAO {
+public class OffersDao {
     private NamedParameterJdbcTemplate jdbc;
 
     @Autowired
