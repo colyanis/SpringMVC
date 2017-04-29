@@ -4,6 +4,8 @@ import com.mykola.spring.web.dao.Offer;
 import com.mykola.spring.web.dao.User;
 import com.mykola.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,12 +43,23 @@ public class LoginController {
 
         if (result.hasErrors()) {
 
-            return "createaccount";
+            return "newaccount";
         }
 
         user.setAuthority("user");
         user.setEnabled(true);
-        usersService.create(user);
+
+        if (usersService.exist(user.getUsername())) {
+            result.rejectValue("username", "DuplicateKey.user.username", "Username already exists");
+            return "newaccount";
+        }
+
+        try {
+            usersService.create(user);
+        } catch (DuplicateKeyException e) {
+            result.rejectValue("username", "DuplicateKey.user.username", "Username already exists");
+            return "newaccount";
+        }
 
         return "accountcreated";
     }

@@ -18,7 +18,9 @@
         <td>
             <sf:input class="control" name="username" type="text" path="username"/>
             <br/>
-            <sf:errors path="username" cssClass="error"></sf:errors>
+            <div class="error">
+                <sf:errors path="username"></sf:errors>
+            </div>
         </td>
     </tr>
     <tr>
@@ -26,7 +28,9 @@
         <td>
             <sf:input class="control" path="email" name="email" type="text"/>
             <br/>
-            <sf:errors path="email" cssClass="error"></sf:errors>
+            <div class="error">
+                <sf:errors path="email"></sf:errors>
+            </div>
         </td>
     </tr>
     <tr>
@@ -34,7 +38,9 @@
         <td>
             <sf:input class="control" path="password" name="password" type="text"/>
             <br/>
-            <sf:errors path="password" cssClass="error"></sf:errors>
+            <div class="error">
+                <sf:errors path="password" ></sf:errors>
+            </div>
         </td>
     </tr>
     <tr>

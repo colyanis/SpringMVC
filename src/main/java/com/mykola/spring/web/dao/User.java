@@ -1,13 +1,27 @@
 package com.mykola.spring.web.dao;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * Created by M on 27.04.2017.
  */
 public class User {
+    @NotBlank(message = "Username cannot be blank.")
+    @Size(min = 8, max = 15)
+    @Pattern(regexp = "^\\w{8,}$", message = "Username only numbers, leters etc.")
     private String username;
+
+    @NotBlank
+    @Pattern(regexp = "^\\S+$")
+    @Size(min = 8, max = 15)
     private String password;
+
+    @Email
     private String email;
     private boolean enabled = false;
     private String authority;
