@@ -11,9 +11,9 @@ import javax.validation.constraints.Size;
  * Created by M on 27.04.2017.
  */
 public class User {
-    @NotBlank(message = "Username cannot be blank.")
+    @NotBlank
     @Size(min = 8, max = 15)
-    @Pattern(regexp = "^\\w{8,}$", message = "Username only numbers, leters etc.")
+    @Pattern(regexp = "^\\w{8,}$")
     private String username;
 
     @NotBlank
