@@ -3,6 +3,7 @@ package com.mykola.spring.web.service;
 import com.mykola.spring.web.dao.User;
 import com.mykola.spring.web.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class UsersService {
         return usersDao.exists(username);
     }
 
+    @Secured("ROLE_ADMIN")
     public List<User> getAllUsers() {
         return usersDao.getAllUsers();
     }

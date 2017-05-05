@@ -22,7 +22,7 @@
     <p><a href="<c:url value='/logout'/>">Log out</a></p>
 </sec:authorize>
 
-<sec:authorize access="hasAnyAuthority('admin')">
+<sec:authorize access="hasAnyAuthority('ROLE_ADMIN')">
     <p><a href="<c:url value="/admin"/>"/>Admin</p>
 </sec:authorize>
 
