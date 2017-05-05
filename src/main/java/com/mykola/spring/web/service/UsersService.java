@@ -5,10 +5,13 @@ import com.mykola.spring.web.dao.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("usersService")
 public class UsersService {
 
     private UsersDao usersDao;
+    private List<User> allUsers;
 
     @Autowired
     public void setUsersDao(UsersDao usersDao) {
@@ -21,5 +24,9 @@ public class UsersService {
 
     public boolean exist(String username) {
         return usersDao.exists(username);
+    }
+
+    public List<User> getAllUsers() {
+        return usersDao.getAllUsers();
     }
 }

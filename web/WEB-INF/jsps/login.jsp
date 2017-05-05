@@ -15,7 +15,7 @@
 <form name='f' action='${pageContext.request.contextPath}/login' method='POST'>
     <table class="formtable">
         <tr>
-            <td>User:</td>
+            <td>User1:</td>
             <td><input type='text' name='username' value=''></td>
         </tr>
         <tr>

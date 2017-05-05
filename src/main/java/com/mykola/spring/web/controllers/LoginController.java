@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by mtverdok on 4/27/2017.
@@ -30,6 +31,15 @@ public class LoginController {
     @RequestMapping("/login")
     public String showLogin() {
         return "login";
+    }
+
+    @RequestMapping("/admin")
+    public String showAdmin(Model model) {
+        List<User> users = usersService.getAllUsers();
+
+        model.addAttribute("users", users);
+
+        return "admin";
     }
 
     @RequestMapping("/loggedout")

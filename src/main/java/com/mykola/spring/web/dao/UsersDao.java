@@ -1,6 +1,7 @@
 package com.mykola.spring.web.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -16,6 +17,7 @@ import java.util.List;
 @Component("usersDao")
 public class UsersDao {
     private NamedParameterJdbcTemplate jdbc;
+    private List<User> allUsers;
 
     @Autowired
     public void setDataSource(DataSource jdbc) {
@@ -34,5 +36,11 @@ public class UsersDao {
     public boolean exists(String username) {
         return jdbc.queryForObject("select count(*) from users where username=:username",
                 new MapSqlParameterSource("username", username), Integer.class) > 0;
+    }
+
+    public List<User> getAllUsers() {
+        // Rowmapper authomatically populates each record into User class.
+        return jdbc.query("select * from users, authorities where users.username=authorities.username",
+                BeanPropertyRowMapper.newInstance(User.class));
     }
 }
