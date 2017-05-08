@@ -23,6 +23,10 @@
             <td><input type='password' name='password'/></td>
         </tr>
         <tr>
+            <td>Remember Me:</td>
+            <td colspan='2'><input name="remember-me" type="checkbox"/></td>
+        </tr>
+        <tr>
             <td colspan='2'><input name="submit" type="submit" value="Login"/></td>
         </tr>
     </table>

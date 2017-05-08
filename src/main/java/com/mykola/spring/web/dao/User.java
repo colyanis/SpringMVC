@@ -12,13 +12,13 @@ import javax.validation.constraints.Size;
  */
 public class User {
     @NotBlank
-    @Size(min = 8, max = 15)
-    @Pattern(regexp = "^\\w{8,}$")
+    @Size(min = 2, max = 15)
+    @Pattern(regexp = "^\\w{2,}$")
     private String username;
 
     @NotBlank
     @Pattern(regexp = "^\\S+$")
-    @Size(min = 8, max = 15)
+    @Size(min = 2, max = 15)
     private String password;
 
     @Email
