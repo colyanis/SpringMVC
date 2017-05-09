@@ -1,10 +1,9 @@
 package com.mykola.spring.web.controllers;
 
-import com.mykola.spring.web.dao.Offer;
+
 import com.mykola.spring.web.dao.User;
 import com.mykola.spring.web.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
@@ -16,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 import java.util.List;
 
-/**
- * Created by mtverdok on 4/27/2017.
- */
 @Controller
 public class LoginController {
 
@@ -55,22 +51,23 @@ public class LoginController {
 
     @RequestMapping("/newaccount")
     public String showNewAccount(Model model) {
+
         model.addAttribute("user", new User());
         return "newaccount";
     }
+
 
     @RequestMapping(value = "/createaccount", method = RequestMethod.POST)
     public String createAccount(@Valid User user, BindingResult result) {
 
         if (result.hasErrors()) {
-
             return "newaccount";
         }
 
         user.setAuthority("ROLE_USER");
         user.setEnabled(true);
 
-        if (usersService.exist(user.getUsername())) {
+        if (usersService.exists(user.getUsername())) {
             result.rejectValue("username", "DuplicateKey.user.username");
             return "newaccount";
         }
@@ -81,6 +78,7 @@ public class LoginController {
             result.rejectValue("username", "DuplicateKey.user.username");
             return "newaccount";
         }
+
 
         return "accountcreated";
     }

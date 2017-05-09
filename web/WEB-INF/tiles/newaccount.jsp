@@ -3,60 +3,7 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<html>
-<head>
-    <title>Create New Account</title>
-    <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/static/script/jquery.js">
-    </script>
-    <script type="text/javascript">
-        function onLoad() {
-            $('#password').keyup(checkPasswordsMatch);
-            $('#confirmpass').keyup(checkPasswordsMatch);
-
-            $("#details").submit(canSubmit)
-        }
-
-        function canSubmit() {
-            var password = $("#password").val();
-            var confirmpass = $("#confirmpass").val();
-
-            if(password == confirmpass) {
-                return true;
-            } else {
-                alert("<fmt:message key='UnmatchedPassword.user.password'/>")
-                return false;
-            }
-        }
-
-        function checkPasswordsMatch() {
-            var password = $('#password').val();
-            var confirmpass = $('#confirmpass').val();
-
-            if (password.length > 3 || confirmpass.length > 3) {
-                if (password == confirmpass) {
-                    $('#matchpass').text("<fmt:message key='MatchedPassword.user.password'/>")
-                    $("#matchpass").addClass("valid");
-                    $("#matchpass").remove("error");
-                } else {
-                    $('#matchpass').text("<fmt:message key='UnmatchedPassword.user.password'/>")
-                    $("#matchpass").remove("valid");
-                    $("#matchpass").addClass("error");
-                }
-            }
-
-        }
-
-        $(document).ready(onLoad);
-    </script>
-</head>
-<body>
-
 <h2>Create new account</h2>
-
-
-
 
 <sf:form id = "details" method="post" action="${pageContext.request.contextPath}/createaccount" commandName="user">
     <table class="formtable">
@@ -109,5 +56,3 @@
         </tr>
     </table>
 </sf:form>
-</body>
-</html>

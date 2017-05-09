@@ -1,22 +1,6 @@
 <%--suppress ALL --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
-<html>
-<head>
-    <title>Create Offer</title>
-    <link href="${pageContext.request.contextPath}/static/css/main.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-
-<sec:authorize access="!isAuthenticated()">
-    <p><a href="<c:url value='/login'/>">Log in</a></p>
-</sec:authorize>
-
-<sec:authorize access="isAuthenticated()">
-    <p><a href="<c:url value='/logout'/>">Log out</a></p>
-</sec:authorize>
 
 <sf:form method="post" action="${pageContext.request.contextPath}/docreate" commandName="offer">
 <table class="formtable">
@@ -52,5 +36,3 @@
     </tr>
 </table>
 </sf:form>
-</body>
-</html>
