@@ -78,4 +78,10 @@
         <put-attribute name="title" value="Admin's page"></put-attribute>
         <put-attribute name="content" value="/WEB-INF/tiles/admin.jsp"></put-attribute>
     </definition>
+
+    <definition name = "offerdeleted"
+                extends="offers.base">
+        <put-attribute name="title" value="Admin's page"></put-attribute>
+        <put-attribute name="content" value="/WEB-INF/tiles/offerdeleted.jsp"></put-attribute>
+    </definition>
 </tiles-definitions>
